@@ -1,0 +1,15 @@
+{
+  "profile": "default",
+  "corpus_sha256": "1bc7dda04c58a4d87e2e6607a0e612462b87e7da6dde56be610d3749521af744",
+  "sentences": 564,
+  "exact_sentences": 366,
+  "sentence_accuracy": 0.648936170212766,
+  "tokens": {
+    "gold": 11132,
+    "predicted": 10905,
+    "correct": 10604,
+    "precision": 0.9723979825767997,
+    "recall": 0.9525691699604744,
+    "f1": 0.9623814493805872
+  }
+}
