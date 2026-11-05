@@ -3,6 +3,17 @@ package tokenizer
 import "github.com/espositopasquale/lin-go/rules"
 
 func NewItalian(options ...Options) *Tokenizer {
+	return newItalian(false, options...)
+}
+
+// NewItalianUD tokenizes Italian text using Universal Dependencies conventions.
+// It splits elisions like l'amico into l' and amico, but keeps nella and dammelo
+// together. It returns surface tokens, without dependency or morphological analysis.
+func NewItalianUD(options ...Options) *Tokenizer {
+	return newItalian(true, options...)
+}
+
+func newItalian(ud bool, options ...Options) *Tokenizer {
 	opts := DefaultOptions()
 
 	if len(options) > 0 {
@@ -16,14 +27,14 @@ func NewItalian(options ...Options) *Tokenizer {
 		rules.DateRule{},
 		rules.TimeRule{},
 
-		italianAbbreviations(),
 		italianAcronyms(),
+		italianAbbreviations(),
+		italianExceptionRule{rules.NewAbbreviationRule(italianWordExceptions)},
 		italianUnits(),
 
-		rules.NumberRule{},
-		rules.WordRule{},
-		rules.PunctuationRule{},
-		rules.SymbolRule{},
+		italianNumberRule{ud: ud},
+		italianWordRule{ud: ud},
+		rules.PunctuationRule{Single: ud},
 	)
 
 	return &Tokenizer{

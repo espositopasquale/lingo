@@ -34,7 +34,7 @@ func (NumberRule) Match(text string, start int) (Match, bool) {
 			digits++
 		}
 
-		if digits != 3 {
+		if digits != 3 || next.IsDigit() {
 			break
 		}
 

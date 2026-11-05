@@ -1,6 +1,10 @@
 package rules
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+	"unicode/utf8"
+)
 
 type UnitRule struct {
 	units map[string]struct{}
@@ -40,29 +44,25 @@ func (r *UnitRule) Match(
 		return Match{}, false
 	}
 
-	c := NewCursor(text, start)
-
-	if !c.IsLetter() {
+	// Treat a unit as such only after a number: "12 cm", not "a casa".
+	// Match the full symbol so units like m² and °C work too.
+	previous := strings.TrimRightFunc(text[:start], unicode.IsSpace)
+	last, _ := utf8.DecodeLastRuneInString(previous)
+	if !unicode.IsDigit(last) {
 		return Match{}, false
 	}
-
-	for c.IsLetter() {
-		c = c.Advance()
-	}
-
-	end := c.Pos()
-	value := text[start:end]
-
-	if _, ok := r.units[strings.ToLower(value)]; !ok {
-		return Match{}, false
-	}
-
-	if end < len(text) {
-		next := NewCursor(text, end)
-
-		if next.IsLetter() {
-			return Match{}, false
+	end := -1
+	for unit := range r.units {
+		candidateEnd := start + len(unit)
+		if candidateEnd > len(text) || !strings.EqualFold(text[start:candidateEnd], unit) {
+			continue
 		}
+		if !wordContinues(text, candidateEnd) && candidateEnd > end {
+			end = candidateEnd
+		}
+	}
+	if end < 0 {
+		return Match{}, false
 	}
 
 	return Match{

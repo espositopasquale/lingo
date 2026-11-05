@@ -3,11 +3,9 @@ package tokenizer
 import "github.com/espositopasquale/lin-go/rules"
 
 func italianAbbreviations() *rules.AbbreviationRule {
-	return rules.NewAbbreviationRule([]string{
+	words := []string{
 
-		// --------------------------------------------------
 		// Mesi
-		// --------------------------------------------------
 
 		"gen.",
 		"genn.",
@@ -26,10 +24,10 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"ott.",
 		"nov.",
 		"dic.",
+		"distr.",
+		"l.",
 
-		// --------------------------------------------------
 		// Giorni della settimana
-		// --------------------------------------------------
 
 		"lun.",
 		"mar.",
@@ -39,9 +37,7 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"sab.",
 		"dom.",
 
-		// --------------------------------------------------
 		// Titoli e professioni
-		// --------------------------------------------------
 
 		"sig.",
 		"sig.ra",
@@ -71,9 +67,7 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"sen.ri",
 		"sen.re",
 
-		// --------------------------------------------------
 		// Formule di cortesia
-		// --------------------------------------------------
 
 		"egr.",
 		"egr.ia",
@@ -100,9 +94,7 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"rev.",
 		"rev.mo",
 
-		// --------------------------------------------------
 		// Abbreviazioni comuni
-		// --------------------------------------------------
 
 		"ecc.",
 		"etc.",
@@ -132,9 +124,7 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"tav.",
 		"pp.",
 
-		// --------------------------------------------------
 		// Azienda / società
-		// --------------------------------------------------
 
 		"s.p.a.",
 		"s.p.a",
@@ -155,109 +145,7 @@ func italianAbbreviations() *rules.AbbreviationRule {
 		"tel",
 		"fax",
 		"cell.",
-
-		// --------------------------------------------------
-		// Istituzioni e sigle
-		// --------------------------------------------------
-
-		"ue",
-		"unione europea",
-		"onu",
-		"nato",
-		"usa",
-		"uk",
-		"ue",
-		"rai",
-		"inps",
-		"inail",
-		"iva",
-		"irpef",
-		"imu",
-		"spid",
-		"pec",
-		"asl",
-		"ssn",
-		"istat",
-		"agcom",
-		"consob",
-		"bce",
-		"abi",
-		"aci",
-
-		// --------------------------------------------------
-		// Politica / organizzazioni
-		// --------------------------------------------------
-
-		"pd",
-		"fi",
-		"fdi",
-		"m5s",
-		"ong",
-		"onlus",
-		"odv",
-
-		// --------------------------------------------------
-		// Economia / amministrazione
-		// --------------------------------------------------
-
-		"pil",
-		"pil.",
-		"cda",
-		"ad",
-		"ceo",
-		"pmi",
-		"iva",
-		"irpef",
-		"isee",
-		"cciaa",
-
-		// --------------------------------------------------
-		// Unità e abbreviazioni tecniche
-		// --------------------------------------------------
-
-		"km",
-		"m",
-		"cm",
-		"mm",
-		"dm",
-		"kg",
-		"g",
-		"mg",
-		"l",
-		"ml",
-		"cl",
-		"dl",
-
-		// --------------------------------------------------
-		// Informatica / comunicazione
-		// --------------------------------------------------
-
-		"pc",
-		"tv",
-		"tg",
-		"msg",
-		"app",
-		"web",
-		"faq",
-		"api",
-		"url",
-
-		// --------------------------------------------------
-		// Scrittura informale / chat
-		// --------------------------------------------------
-
-		"nn",
-		"sn",
-		"qnd",
-		"qlcs",
-		"cmq",
-		"grz",
-		"ke",
-		"ki",
-		"xkè",
-		"xke",
-		"xò",
-		"x",
-		"tvb",
-	})
+	}
+	words = append(words, italianImportedAbbreviations...)
+	return rules.NewAbbreviationRuleWithNumericOnly(words, italianNumericAbbreviations)
 }

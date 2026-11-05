@@ -1,100 +1,104 @@
 package rules
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+	"unicode/utf8"
+)
 
-type AbbreviationRule struct {
-	words map[string]struct{}
+type lexiconNode struct {
+	children    map[rune]*lexiconNode
+	terminal    bool
+	numericOnly bool
 }
 
-func NewAbbreviationRule(words []string) *AbbreviationRule {
-	m := make(map[string]struct{}, len(words))
+func (n *lexiconNode) add(word string, numericOnly bool) {
+	for _, r := range strings.TrimSpace(word) {
+		if n.children == nil {
+			n.children = make(map[rune]*lexiconNode)
+		}
+		r = foldRune(r)
+		if n.children[r] == nil {
+			n.children[r] = &lexiconNode{}
+		}
+		n = n.children[r]
+	}
+	if !n.terminal {
+		n.numericOnly = numericOnly
+	} else {
+		n.numericOnly = n.numericOnly && numericOnly
+	}
+	n.terminal = true
+}
 
-	for _, word := range words {
-		word = strings.TrimSpace(word)
+// Map case-equivalent runes to the same key, including σ/ς/Σ and k/K/K.
+func foldRune(r rune) rune {
+	min := r
+	for next := unicode.SimpleFold(r); next != r; next = unicode.SimpleFold(next) {
+		if next < min {
+			min = next
+		}
+	}
+	return min
+}
 
-		if word == "" {
+func (n *lexiconNode) match(text string, start int, accept func(int) bool) int {
+	best := -1
+	for pos := start; pos < len(text); {
+		r, size := utf8.DecodeRuneInString(text[pos:])
+		n = n.children[foldRune(r)]
+		if n == nil {
+			break
+		}
+		pos += size
+		if n.terminal && !wordContinues(text, pos) && (!n.numericOnly || followingNumber(text, pos)) && (accept == nil || accept(pos)) {
+			best = pos
+		}
+	}
+	return best
+}
+
+func followingNumber(text string, pos int) bool {
+	for _, r := range text[pos:] {
+		if unicode.IsSpace(r) {
 			continue
 		}
-
-		m[strings.ToLower(word)] = struct{}{}
+		return unicode.IsDigit(r)
 	}
+	return false
+}
 
-	return &AbbreviationRule{
-		words: m,
+type AbbreviationRule struct{ words lexiconNode }
+
+func NewAbbreviationRule(words []string) *AbbreviationRule {
+	return NewAbbreviationRuleWithNumericOnly(words, nil)
+}
+
+func NewAbbreviationRuleWithNumericOnly(words, numericOnly []string) *AbbreviationRule {
+	r := &AbbreviationRule{}
+	for _, word := range words {
+		if strings.TrimSpace(word) != "" {
+			r.words.add(word, false)
+		}
 	}
+	for _, word := range numericOnly {
+		if strings.TrimSpace(word) != "" {
+			r.words.add(word, true)
+		}
+	}
+	return r
 }
 
-func (r *AbbreviationRule) Name() string {
-	return "abbreviation"
-}
+func (*AbbreviationRule) Name() string  { return "abbreviation" }
+func (*AbbreviationRule) Priority() int { return 400 }
 
-func (r *AbbreviationRule) Priority() int {
-	return 400
-}
-
-func (r *AbbreviationRule) Match(
-	text string,
-	start int,
-) (Match, bool) {
+func (r *AbbreviationRule) Match(text string, start int) (Match, bool) {
 	if start < 0 || start >= len(text) {
 		return Match{}, false
 	}
-
-	remaining := text[start:]
-
-	bestEnd := -1
-
-	for abbreviation := range r.words {
-		if len(abbreviation) > len(remaining) {
-			continue
-		}
-
-		candidate := remaining[:len(abbreviation)]
-
-		if !strings.EqualFold(candidate, abbreviation) {
-			continue
-		}
-
-		if !validAbbreviationBoundary(
-			text,
-			start,
-			start+len(abbreviation),
-		) {
-			continue
-		}
-
-		if start+len(abbreviation) > bestEnd {
-			bestEnd = start + len(abbreviation)
-		}
-	}
-
-	if bestEnd == -1 {
+	end := r.words.match(text, start, nil)
+	if end < 0 {
 		return Match{}, false
 	}
-
-	return Match{
-		Start: start,
-		End:   bestEnd,
-		Type:  Abbreviation,
-	}, true
-}
-
-func validAbbreviationBoundary(
-	text string,
-	start int,
-	end int,
-) bool {
-	if end >= len(text) {
-		return true
-	}
-
-	c := NewCursor(text, end)
-
-	if c.IsLetter() || c.IsDigit() {
-		return false
-	}
-
-	_ = start
-
-	return true
+	return Match{Start: start, End: end, Type: Abbreviation}, true
 }

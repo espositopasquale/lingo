@@ -1,50 +1,23 @@
 package tokenizer
 
-type TokenType int
+import "github.com/espositopasquale/lin-go/rules"
+
+type TokenType = rules.TokenType
 
 const (
-	Unknown TokenType = iota
-	Word
-	Number
-	Date
-	Time
-	Abbreviation
-	Acronym
-	Unit
-	Email
-	URL
-	Punctuation
-	Symbol
+	Unknown      = rules.Unknown
+	Word         = rules.Word
+	Number       = rules.Number
+	Date         = rules.Date
+	Time         = rules.Time
+	Abbreviation = rules.Abbreviation
+	Acronym      = rules.Acronym
+	Unit         = rules.Unit
+	Email        = rules.Email
+	URL          = rules.URL
+	Punctuation  = rules.Punctuation
+	Symbol       = rules.Symbol
 )
-
-func (t TokenType) String() string {
-	switch t {
-	case Word:
-		return "word"
-	case Number:
-		return "number"
-	case Date:
-		return "date"
-	case Time:
-		return "time"
-	case Abbreviation:
-		return "abbreviation"
-	case Acronym:
-		return "acronym"
-	case Unit:
-		return "unit"
-	case Email:
-		return "email"
-	case URL:
-		return "url"
-	case Punctuation:
-		return "punctuation"
-	case Symbol:
-		return "symbol"
-	default:
-		return "unknown"
-	}
-}
 
 type Token struct {
 	Value string

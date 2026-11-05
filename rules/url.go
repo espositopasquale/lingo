@@ -70,9 +70,10 @@ func (URLRule) Match(text string, start int) (Match, bool) {
 		return Match{}, false
 	}
 
-	host := text[hostStart:c.Pos()]
+	// Leave a sentence-ending period outside the host name.
+	host := strings.TrimRight(text[hostStart:c.Pos()], ".")
 
-	if strings.HasPrefix(host, ".") ||
+	if host == "" || strings.HasPrefix(host, ".") ||
 		strings.HasSuffix(host, ".") {
 
 		return Match{}, false
@@ -113,7 +114,7 @@ func trimURLPunctuation(
 	end int,
 ) int {
 	for end > start {
-		r, size := lastRune(text[start:end])
+		r, size := utf8.DecodeLastRuneInString(text[start:end])
 
 		switch r {
 		case '.', ',', ';', ':', '!', '?', ')', ']', '}':
@@ -124,14 +125,4 @@ func trimURLPunctuation(
 	}
 
 	return end
-}
-
-func lastRune(text string) (rune, int) {
-	for len(text) > 0 {
-		r, size := utf8.DecodeLastRuneInString(text)
-
-		return r, size
-	}
-
-	return 0, 0
 }

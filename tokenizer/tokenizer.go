@@ -50,7 +50,7 @@ func (t *Tokenizer) Tokenize(text string) []Token {
 
 		token := Token{
 			Value: text[match.Start:match.End],
-			Type:  TokenType(match.Type),
+			Type:  match.Type,
 			Start: match.Start,
 			End:   match.End,
 		}

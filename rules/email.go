@@ -46,59 +46,29 @@ func (EmailRule) Match(text string, start int) (Match, bool) {
 
 	c = c.Advance()
 
-	domainStart := c.Pos()
-	domainChars := 0
-
-	for !c.End() {
-		r, _ := c.Rune()
-
-		if unicode.IsLetter(r) ||
-			unicode.IsDigit(r) ||
-			r == '-' {
-
-			domainChars++
+	labels := 0
+	lastLabel := ""
+	for {
+		labelStart := c.Pos()
+		for !c.End() {
+			r, _ := c.Rune()
+			if !unicode.IsLetter(r) && !unicode.IsDigit(r) && r != '-' {
+				break
+			}
 			c = c.Advance()
-			continue
 		}
-
-		break
-	}
-
-	if domainChars == 0 {
-		return Match{}, false
-	}
-
-	if c.Pos() == domainStart {
-		return Match{}, false
-	}
-
-	domain := text[domainStart:c.Pos()]
-
-	if strings.HasPrefix(domain, "-") ||
-		strings.HasSuffix(domain, "-") {
-		return Match{}, false
-	}
-
-	if !c.MatchRune('.') {
-		return Match{}, false
-	}
-
-	c = c.Advance()
-
-	tldStart := c.Pos()
-
-	for !c.End() {
-		r, _ := c.Rune()
-
-		if unicode.IsLetter(r) {
-			c = c.Advance()
-			continue
+		label := text[labelStart:c.Pos()]
+		if label == "" || strings.HasPrefix(label, "-") || strings.HasSuffix(label, "-") {
+			return Match{}, false
 		}
-
-		break
+		labels++
+		lastLabel = label
+		if !c.MatchRune('.') || !c.Advance().IsLetter() && !c.Advance().IsDigit() {
+			break
+		}
+		c = c.Advance()
 	}
-
-	if c.Pos() == tldStart {
+	if labels < 2 || strings.IndexFunc(lastLabel, func(r rune) bool { return !unicode.IsLetter(r) }) >= 0 {
 		return Match{}, false
 	}
 

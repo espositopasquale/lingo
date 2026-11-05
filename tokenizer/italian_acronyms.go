@@ -53,5 +53,15 @@ func italianAcronyms() *rules.AcronymRule {
 		"CdA",
 		"AD",
 		"CEO",
+
+		// Institutions, international organizations and common technical acronyms.
+		"CNR", "ENEA", "INFN", "ISS", "ANSA", "ANAC", "ARPA",
+		"MEF", "MIUR", "MUR", "MISE", "MIMIT", "MAECI",
+		"INPDAP", "ENI", "ENEL", "CUP", "TAR", "CNEL",
+		"CONI", "FIGC", "CGIL", "CISL", "UIL",
+		"OMS", "FAO", "UNESCO", "UNICEF", "OCSE", "FMI", "WTO",
+		"PDF", "HTML", "XML", "JSON", "HTTP", "HTTPS", "SQL", "GPS",
+		"IBAN", "BIC", "SWIFT", "PIN", "OTP", "GDPR", "DPO",
+		"S.p.A.", "S.r.l.", "S.n.c.", "S.a.s.",
 	})
 }

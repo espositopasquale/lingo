@@ -55,6 +55,28 @@ func (c Cursor) IsLetter() bool {
 	return unicode.IsLetter(r)
 }
 
+// Recognizes combining marks, such as an accent stored after its letter.
+func (c Cursor) IsMark() bool {
+	if c.End() {
+		return false
+	}
+	r, _ := c.Rune()
+	return unicode.IsMark(r)
+}
+
+// Keeps dictionary matches from cutting a word short.
+// Apostrophes in words like l'amico and combining accents also count.
+func wordContinues(text string, end int) bool {
+	c := NewCursor(text, end)
+	if c.IsLetter() || c.IsDigit() || c.IsMark() {
+		return true
+	}
+	if isApostrophe(c) {
+		return c.Advance().IsLetter()
+	}
+	return false
+}
+
 func (c Cursor) IsDigit() bool {
 	if c.End() {
 		return false
@@ -64,15 +86,6 @@ func (c Cursor) IsDigit() bool {
 	return unicode.IsDigit(r)
 }
 
-func (c Cursor) IsSpace() bool {
-	if c.End() {
-		return false
-	}
-
-	r, _ := c.Rune()
-	return unicode.IsSpace(r)
-}
-
 func (c Cursor) IsPunct() bool {
 	if c.End() {
 		return false
@@ -80,15 +93,6 @@ func (c Cursor) IsPunct() bool {
 
 	r, _ := c.Rune()
 	return unicode.IsPunct(r)
-}
-
-func (c Cursor) IsSymbol() bool {
-	if c.End() {
-		return false
-	}
-
-	r, _ := c.Rune()
-	return unicode.IsSymbol(r)
 }
 
 func (c Cursor) MatchRune(expected rune) bool {

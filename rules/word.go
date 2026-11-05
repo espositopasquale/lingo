@@ -20,7 +20,7 @@ func (WordRule) Match(text string, start int) (Match, bool) {
 	c = c.Advance()
 
 	for !c.End() {
-		if c.IsLetter() {
+		if c.IsLetter() || c.IsMark() || c.IsDigit() {
 			c = c.Advance()
 			continue
 		}
