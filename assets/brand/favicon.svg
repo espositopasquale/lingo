@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="favicon-title favicon-desc">
+<title id="favicon-title">Lingo</title>
+<desc id="favicon-desc">Lingo compact Lg monogram: tricolor L and Go-cyan g on navy.</desc>
+<rect width="512" height="512" rx="112" fill="#101B2D"/>
+<defs><clipPath id="favicon-l"><path d="M78 35H144Q155 35 152 47L106 267H217Q228 267 225 279L213 336Q210 348 199 348H17Q4 348 7 335L66 47Q69 35 78 35Z"/></clipPath></defs>
+<g transform="translate(48 57) scale(.82)" clip-path="url(#favicon-l)">
+<path fill="#009246" d="M-100-100H400V600H-100Z"/>
+<path fill="#FFFFFF" d="M220-100H285L75 600H10Z"/>
+<path fill="#CE2B37" d="M285-100H400V600H75Z"/>
+</g><path fill="#00ADD8" fill-rule="evenodd" transform="translate(-262 57) scale(.82)" d="M817 113H877Q890 113 887 126L841 337C826 408 774 436 699 432C658 430 625 418 605 402Q596 395 602 385L628 337Q633 328 643 333C667 347 685 354 711 354C745 354 761 337 767 308C744 329 718 337 691 333C620 325 599 270 615 205C632 137 687 102 743 106C775 108 798 122 807 142L811 120Q812 113 817 113Z M768 179C739 163 707 183 698 216C687 253 702 272 727 271C756 270 777 249 784 218C789 198 783 185 768 179Z"/>
+</svg>
