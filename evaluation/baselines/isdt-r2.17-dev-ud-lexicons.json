@@ -1,0 +1,15 @@
+{
+  "profile": "ud",
+  "corpus_sha256": "1bc7dda04c58a4d87e2e6607a0e612462b87e7da6dde56be610d3749521af744",
+  "sentences": 564,
+  "exact_sentences": 555,
+  "sentence_accuracy": 0.9840425531914894,
+  "tokens": {
+    "gold": 11132,
+    "predicted": 11114,
+    "correct": 11103,
+    "precision": 0.9990102573330933,
+    "recall": 0.9973948975925261,
+    "f1": 0.9982019239413827
+  }
+}
