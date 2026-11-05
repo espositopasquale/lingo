@@ -1,0 +1,252 @@
+# Original Lin-go regression examples in CoNLL-U format.
+# Not a sample from a UD treebank; POS/dependency columns are placeholders.
+
+# sent_id = lingo-elision
+# text = L'amica dell'artista è nella sala.
+1	L'	_	X	_	_	0	root	_	SpaceAfter=No
+2	amica	_	X	_	_	1	dep	_	_
+3-4	dell'	_	_	_	_	_	_	_	SpaceAfter=No
+3	di	_	X	_	_	1	dep	_	_
+4	l'	_	X	_	_	1	dep	_	_
+5	artista	_	X	_	_	1	dep	_	_
+6	è	_	X	_	_	1	dep	_	_
+7-8	nella	_	_	_	_	_	_	_	_
+7	in	_	X	_	_	1	dep	_	_
+8	la	_	X	_	_	1	dep	_	_
+9	sala	_	X	_	_	1	dep	_	SpaceAfter=No
+10	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-curly
+# text = Un’amica com’è?
+1	Un’	_	X	_	_	0	root	_	SpaceAfter=No
+2	amica	_	X	_	_	1	dep	_	_
+3	com’	_	X	_	_	1	dep	_	SpaceAfter=No
+4	è	_	X	_	_	1	dep	_	SpaceAfter=No
+5	?	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-apostrophes
+# text = O’Connor disse: «Un po' d'acqua».
+1	O’Connor	_	X	_	_	0	root	_	_
+2	disse	_	X	_	_	1	dep	_	SpaceAfter=No
+3	:	_	X	_	_	1	dep	_	_
+4	«	_	X	_	_	1	dep	_	SpaceAfter=No
+5	Un	_	X	_	_	1	dep	_	_
+6	po'	_	X	_	_	1	dep	_	_
+7	d'	_	X	_	_	1	dep	_	SpaceAfter=No
+8	acqua	_	X	_	_	1	dep	_	SpaceAfter=No
+9	»	_	X	_	_	1	dep	_	SpaceAfter=No
+10	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-acronym-elision
+# text = L’UE incontra l’ONU.
+1	L’	_	X	_	_	0	root	_	SpaceAfter=No
+2	UE	_	X	_	_	1	dep	_	_
+3	incontra	_	X	_	_	1	dep	_	_
+4	l’	_	X	_	_	1	dep	_	SpaceAfter=No
+5	ONU	_	X	_	_	1	dep	_	SpaceAfter=No
+6	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-abbreviations
+# text = Il dott. Rossi cita l'art. 3.
+1	Il	_	X	_	_	0	root	_	_
+2	dott.	_	X	_	_	1	dep	_	_
+3	Rossi	_	X	_	_	1	dep	_	_
+4	cita	_	X	_	_	1	dep	_	_
+5	l'	_	X	_	_	1	dep	_	SpaceAfter=No
+6	art.	_	X	_	_	1	dep	_	_
+7	3	_	X	_	_	1	dep	_	SpaceAfter=No
+8	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-date-time
+# text = Oggi è il 31/08/2026 alle 14:30.
+1	Oggi	_	X	_	_	0	root	_	_
+2	è	_	X	_	_	1	dep	_	_
+3	il	_	X	_	_	1	dep	_	_
+4	31/08/2026	_	X	_	_	1	dep	_	_
+5-6	alle	_	_	_	_	_	_	_	_
+5	a	_	X	_	_	1	dep	_	_
+6	le	_	X	_	_	1	dep	_	_
+7	14:30	_	X	_	_	1	dep	_	SpaceAfter=No
+8	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-short-date
+# text = Il 1/1/1970 alle 11:00.
+1	Il	_	X	_	_	0	root	_	_
+2	1/1/1970	_	X	_	_	1	dep	_	_
+3-4	alle	_	_	_	_	_	_	_	_
+3	a	_	X	_	_	1	dep	_	_
+4	le	_	X	_	_	1	dep	_	_
+5	11:00	_	X	_	_	1	dep	_	SpaceAfter=No
+6	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-numbers
+# text = Costa 1.250,50 euro, circa il 2,5%.
+1	Costa	_	X	_	_	0	root	_	_
+2	1.250,50	_	X	_	_	1	dep	_	_
+3	euro	_	X	_	_	1	dep	_	SpaceAfter=No
+4	,	_	X	_	_	1	dep	_	_
+5	circa	_	X	_	_	1	dep	_	_
+6	il	_	X	_	_	1	dep	_	_
+7	2,5%	_	X	_	_	1	dep	_	SpaceAfter=No
+8	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-ranges
+# text = Tra 2-3 giorni: 5–7‰.
+1	Tra	_	X	_	_	0	root	_	_
+2	2-3	_	X	_	_	1	dep	_	_
+3	giorni	_	X	_	_	1	dep	_	SpaceAfter=No
+4	:	_	X	_	_	1	dep	_	_
+5	5–7‰	_	X	_	_	1	dep	_	SpaceAfter=No
+6	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-punctuation
+# text = «Davvero?!» Sì...
+1	«	_	X	_	_	0	root	_	SpaceAfter=No
+2	Davvero	_	X	_	_	1	dep	_	SpaceAfter=No
+3	?	_	X	_	_	1	dep	_	SpaceAfter=No
+4	!	_	X	_	_	1	dep	_	SpaceAfter=No
+5	»	_	X	_	_	1	dep	_	_
+6	Sì	_	X	_	_	1	dep	_	SpaceAfter=No
+7	...	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-units
+# text = Misura 12 cm e 3 m² a 20 °C.
+1	Misura	_	X	_	_	0	root	_	_
+2	12	_	X	_	_	1	dep	_	_
+3	cm	_	X	_	_	1	dep	_	_
+4	e	_	X	_	_	1	dep	_	_
+5	3	_	X	_	_	1	dep	_	_
+6	m²	_	X	_	_	1	dep	_	_
+7	a	_	X	_	_	1	dep	_	_
+8	20	_	X	_	_	1	dep	_	_
+9	°C	_	X	_	_	1	dep	_	SpaceAfter=No
+10	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-links
+# text = Visita https://esempio.it/pagina?q=1 e scrivi a nome.cognome@example.it.
+1	Visita	_	X	_	_	0	root	_	_
+2	https://esempio.it/pagina?q=1	_	X	_	_	1	dep	_	_
+3	e	_	X	_	_	1	dep	_	_
+4	scrivi	_	X	_	_	1	dep	_	_
+5	a	_	X	_	_	1	dep	_	_
+6	nome.cognome@example.it	_	X	_	_	1	dep	_	SpaceAfter=No
+7	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-lexical-boundaries
+# text = UE, M5S e API: usa il web ad aprile.
+1	UE	_	X	_	_	0	root	_	SpaceAfter=No
+2	,	_	X	_	_	1	dep	_	_
+3	M5S	_	X	_	_	1	dep	_	_
+4	e	_	X	_	_	1	dep	_	_
+5	API	_	X	_	_	1	dep	_	SpaceAfter=No
+6	:	_	X	_	_	1	dep	_	_
+7	usa	_	X	_	_	1	dep	_	_
+8	il	_	X	_	_	1	dep	_	_
+9	web	_	X	_	_	1	dep	_	_
+10	ad	_	X	_	_	1	dep	_	_
+11	aprile	_	X	_	_	1	dep	_	SpaceAfter=No
+12	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-multiword
+# text = Dammelo nella sala, portandolo al banco.
+1-3	Dammelo	_	_	_	_	_	_	_	_
+1	Da	_	X	_	_	0	root	_	_
+2	me	_	X	_	_	1	dep	_	_
+3	lo	_	X	_	_	1	dep	_	_
+4-5	nella	_	_	_	_	_	_	_	_
+4	in	_	X	_	_	1	dep	_	_
+5	la	_	X	_	_	1	dep	_	_
+6	sala	_	X	_	_	1	dep	_	SpaceAfter=No
+7	,	_	X	_	_	1	dep	_	_
+8-9	portandolo	_	_	_	_	_	_	_	_
+8	portando	_	X	_	_	1	dep	_	_
+9	lo	_	X	_	_	1	dep	_	_
+10-11	al	_	_	_	_	_	_	_	_
+10	a	_	X	_	_	1	dep	_	_
+11	il	_	X	_	_	1	dep	_	_
+12	banco	_	X	_	_	1	dep	_	SpaceAfter=No
+13	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-quotes
+# text = Il ragazzo dice: «c'è un'amica».
+1	Il	_	X	_	_	0	root	_	_
+2	ragazzo	_	X	_	_	1	dep	_	_
+3	dice	_	X	_	_	1	dep	_	SpaceAfter=No
+4	:	_	X	_	_	1	dep	_	_
+5	«	_	X	_	_	1	dep	_	SpaceAfter=No
+6	c'	_	X	_	_	1	dep	_	SpaceAfter=No
+7	è	_	X	_	_	1	dep	_	_
+8	un'	_	X	_	_	1	dep	_	SpaceAfter=No
+9	amica	_	X	_	_	1	dep	_	SpaceAfter=No
+10	»	_	X	_	_	1	dep	_	SpaceAfter=No
+11	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-accents
+# text = Un testo italiano; perché è così?
+1	Un	_	X	_	_	0	root	_	_
+2	testo	_	X	_	_	1	dep	_	_
+3	italiano	_	X	_	_	1	dep	_	SpaceAfter=No
+4	;	_	X	_	_	1	dep	_	_
+5	perché	_	X	_	_	1	dep	_	_
+6	è	_	X	_	_	1	dep	_	_
+7	così	_	X	_	_	1	dep	_	SpaceAfter=No
+8	?	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-currency
+# text = Ha pagato € 3,50 e 10%.
+1	Ha	_	X	_	_	0	root	_	_
+2	pagato	_	X	_	_	1	dep	_	_
+3	€	_	X	_	_	1	dep	_	_
+4	3,50	_	X	_	_	1	dep	_	_
+5	e	_	X	_	_	1	dep	_	_
+6	10%	_	X	_	_	1	dep	_	SpaceAfter=No
+7	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-spacing
+# text = L'amico  dell'anno è già qui.
+1	L'	_	X	_	_	0	root	_	SpaceAfter=No
+2	amico	_	X	_	_	1	dep	_	_
+3-4	dell'	_	_	_	_	_	_	_	SpaceAfter=No
+3	di	_	X	_	_	1	dep	_	_
+4	l'	_	X	_	_	1	dep	_	_
+5	anno	_	X	_	_	1	dep	_	_
+6	è	_	X	_	_	1	dep	_	_
+7	già	_	X	_	_	1	dep	_	_
+8	qui	_	X	_	_	1	dep	_	SpaceAfter=No
+9	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-url-period
+# text = Vai su https://esempio.it.
+1	Vai	_	X	_	_	0	root	_	_
+2	su	_	X	_	_	1	dep	_	_
+3	https://esempio.it	_	X	_	_	1	dep	_	SpaceAfter=No
+4	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-email-subdomain
+# text = Invia a nome@mail.esempio.it, grazie.
+1	Invia	_	X	_	_	0	root	_	_
+2	a	_	X	_	_	1	dep	_	_
+3	nome@mail.esempio.it	_	X	_	_	1	dep	_	SpaceAfter=No
+4	,	_	X	_	_	1	dep	_	_
+5	grazie	_	X	_	_	1	dep	_	SpaceAfter=No
+6	.	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-repeated-punctuation
+# text = «Basta!!!»
+1	«	_	X	_	_	0	root	_	SpaceAfter=No
+2	Basta	_	X	_	_	1	dep	_	SpaceAfter=No
+3	!	_	X	_	_	1	dep	_	SpaceAfter=No
+4	!	_	X	_	_	1	dep	_	SpaceAfter=No
+5	!	_	X	_	_	1	dep	_	SpaceAfter=No
+6	»	_	X	_	_	1	dep	_	_
+
+# sent_id = lingo-ordinary-words
+# text = a casa ad aprile con il web
+1	a	_	X	_	_	0	root	_	_
+2	casa	_	X	_	_	1	dep	_	_
+3	ad	_	X	_	_	1	dep	_	_
+4	aprile	_	X	_	_	1	dep	_	_
+5	con	_	X	_	_	1	dep	_	_
+6	il	_	X	_	_	1	dep	_	_
+7	web	_	X	_	_	1	dep	_	_
+
