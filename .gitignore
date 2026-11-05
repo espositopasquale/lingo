@@ -1,0 +1,6 @@
+# External UD corpora are downloaded manually and retain their own licenses.
+/data/ud/
+
+# Local evaluation output and Python asset-generator caches.
+/evaluation/results/
+__pycache__/
