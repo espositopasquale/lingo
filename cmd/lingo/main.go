@@ -14,6 +14,7 @@ import (
 func main() {
 	noPunct := flag.Bool("no-punct", false, "strip punctuation tokens from the output")
 	textFlag := flag.String("text", "", "text to tokenize (skips stdin/args)")
+	ud := flag.Bool("ud", false, "use Italian Universal Dependencies surface-token conventions")
 	flag.Parse()
 
 	options := tokenizer.DefaultOptions()
@@ -21,18 +22,18 @@ func main() {
 
 	switch {
 	case *textFlag != "":
-		tokenize(*textFlag, options)
+		tokenize(*textFlag, options, *ud)
 	case flag.NArg() > 0:
-		tokenize(strings.Join(flag.Args(), " "), options)
+		tokenize(strings.Join(flag.Args(), " "), options, *ud)
 	case stdinHasData():
 		text, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "error reading stdin:", err)
 			os.Exit(1)
 		}
-		tokenize(string(text), options)
+		tokenize(string(text), options, *ud)
 	default:
-		repl(options)
+		repl(options, *ud)
 	}
 }
 
@@ -45,7 +46,7 @@ func stdinHasData() bool {
 	return (stat.Mode() & os.ModeCharDevice) == 0
 }
 
-func repl(options tokenizer.Options) {
+func repl(options tokenizer.Options, ud bool) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Lin-go tokenizer. Type a sentence and press Enter (or type 'exit' to quit).")
@@ -67,7 +68,7 @@ func repl(options tokenizer.Options) {
 			break
 		}
 
-		tokenize(line, options)
+		tokenize(line, options, ud)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -76,8 +77,12 @@ func repl(options tokenizer.Options) {
 	}
 }
 
-func tokenize(text string, options tokenizer.Options) {
-	tokens := tokenizer.NewItalian(options).Tokenize(text)
+func tokenize(text string, options tokenizer.Options, ud bool) {
+	tk := tokenizer.NewItalian(options)
+	if ud {
+		tk = tokenizer.NewItalianUD(options)
+	}
+	tokens := tk.Tokenize(text)
 
 	offsetWidth := len(fmt.Sprintf("%d", len(text)))
 	valueWidth := 0
