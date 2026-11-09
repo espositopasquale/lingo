@@ -4,3 +4,4 @@
 # Local evaluation output and Python asset-generator caches.
 /evaluation/results/
 __pycache__/
+/release/
