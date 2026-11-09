@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""Build the Lingo vector identity and raster exports using system librsvg/Cairo.
-
-No Python packages or network access are required. Use --svg-only to generate
-the vector files without the optional system rendering libraries.
-"""
-
 import argparse
 import ctypes as C
 import ctypes.util
@@ -21,7 +14,6 @@ GREEN = "#009246"
 WHITE = "#FFFFFF"
 RED = "#CE2B37"
 
-# Draw all five letters as paths so the logo needs no installed fonts.
 L = "M78 35H144Q155 35 152 47L106 267H217Q228 267 225 279L213 336Q210 348 199 348H17Q4 348 7 335L66 47Q69 35 78 35Z"
 I = "M279 112H343Q355 112 352 125L307 335Q304 348 292 348H228Q216 348 219 335L264 125Q267 112 279 112Z"
 N = "M385 112H449Q459 112 457 123L454 140C484 112 514 102 546 110C591 122 604 155 593 207L566 337Q564 348 554 348H490Q479 348 481 337L508 209C513 185 505 173 490 174C468 174 450 197 444 226L420 337Q418 348 408 348H343Q332 348 334 337L374 124Q376 112 385 112Z"
@@ -40,7 +32,6 @@ def wordmark(prefix, light=False, mono=None):
     go = f'<path fill-rule="evenodd" d="{G}"/><path fill-rule="evenodd" d="{O}"/>'
     if mono:
         return f'<g fill="{mono}">{shapes}{go}</g>'
-    # Carry the three diagonal flag bands across all of Lin.
     outline = (f'<g fill="none" stroke="{NAVY}" stroke-width="3" '
                f'stroke-linejoin="round">{shapes}</g>') if light else ""
     return f'''<defs><clipPath id="{prefix}-lin">{shapes}</clipPath></defs>
@@ -121,11 +112,9 @@ def preview(assets):
         if filename in ("icon.svg", "monogram.svg"):
             sx, sy, sw, sh = x + 266, y + 20, 180, 180
         elif filename == "favicon.svg":
-            # Show the small exported icons next to a larger reference.
             for offset, size in ((140, 16), (200, 32), (280, 48), (390, 96)):
                 start = svg.index(">")
                 nested = svg[start + 1:svg.rindex("</svg>")]
-                # Give each copy its own SVG IDs so their references do not clash.
                 nested = nested.replace("favicon-", f"preview-{size}-favicon-")
                 body += f'<svg x="{x + offset}" y="{y + (220-size)//2}" width="{size}" height="{size}" viewBox="0 0 512 512">{nested}</svg>'
             body += f'<text x="{x}" y="{y+252}" font-family="DejaVu Sans, sans-serif" font-size="16" fill="#33465D">{html.escape(label)}</text>'
@@ -218,7 +207,6 @@ def write_ico(target, entries):
 
 def write_archive():
     target = ROOT.parent / "lingo-brand-kit.zip"
-    # Include only the brand files in the archive.
     files = {ROOT / "README.md", ROOT / "generate.py"}
     for extension in ("*.svg", "*.png", "*.ico"):
         files.update(ROOT.glob(extension))
