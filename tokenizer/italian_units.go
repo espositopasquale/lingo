@@ -1,6 +1,6 @@
 package tokenizer
 
-import "github.com/espositopasquale/lin-go/rules"
+import "github.com/espositopasquale/lingo/rules"
 
 func italianUnits() *rules.UnitRule {
 	return rules.NewUnitRule([]string{

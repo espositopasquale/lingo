@@ -55,7 +55,7 @@ masters, raster exports, original concept, and generator.
 ```html
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/wordmark-on-dark.svg">
-  <img src="assets/brand/wordmark-on-light.svg" alt="Lin-go" width="420">
+  <img src="assets/brand/wordmark-on-light.svg" alt="LinGo" width="420">
 </picture>
 ```
 

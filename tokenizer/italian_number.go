@@ -3,7 +3,7 @@ package tokenizer
 import (
 	"strings"
 
-	"github.com/espositopasquale/lin-go/rules"
+	"github.com/espositopasquale/lingo/rules"
 )
 
 type italianNumberRule struct{ ud bool }

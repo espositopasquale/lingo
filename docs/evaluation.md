@@ -1,6 +1,6 @@
 # Italian evaluation with Universal Dependencies
 
-Lin-go evaluates **surface tokenization** against CoNLL-U gold annotations.
+LinGo evaluates **surface tokenization** against CoNLL-U gold annotations.
 The tokenizer, reader and evaluator are implemented in Go with no external Go
 dependencies. Evaluation never downloads data or calls an external service.
 
@@ -30,7 +30,7 @@ not counted a second time. The same applies when component forms do not concaten
 to the surface spelling. Empty nodes such as `3.1` have no surface realization
 and are ignored for token scoring.
 
-Lin-go currently does not expand `nella` into `in` + `la`, split enclitic forms
+LinGo currently does not expand `nella` into `in` + `la`, split enclitic forms
 such as `dammelo` into syntactic words, predict UPOS tags, or parse dependency
 trees. The CoNLL-U reader only consumes the fields needed for surface-token
 evaluation; it is not a complete UD graph validator.
@@ -48,7 +48,7 @@ go test ./...
 make evaluate-fixtures
 ```
 
-`evaluation/testdata/italian.conllu` contains **22 original Lin-go examples**, not
+`evaluation/testdata/italian.conllu` contains **22 original LinGo examples**, not
 an excerpt from an external UD corpus. Their POS/dependency columns are structural
 placeholders; only the surface-token boundaries are gold for this suite. They
 exercise elisions, apostrophe variants, MWTs, punctuation, dates, numbers, units,
@@ -72,7 +72,7 @@ Download these files manually, retaining the original names:
 - [README.md](https://raw.githubusercontent.com/UniversalDependencies/UD_Italian-ISDT/r2.17/README.md)
 
 Place them in `data/ud/italian-isdt/r2.17/`. This directory is git-ignored.
-The corpus retains its upstream license and attribution independently of Lin-go's
+The corpus retains its upstream license and attribution independently of LinGo's
 code license; keep its LICENSE and README alongside the data. The train split is
 not needed for this rule-based evaluation.
 
@@ -154,4 +154,4 @@ each tokenizer on the same fixed sample and reports throughput and allocations;
 timings depend on the machine and are deliberately kept outside quality reports.
 
 In an environment with a read-only default Go build cache, select a writable
-cache, for example `GOCACHE=/tmp/lin-go-build-cache make check`.
+cache, for example `GOCACHE=/tmp/LinGo-build-cache make check`.

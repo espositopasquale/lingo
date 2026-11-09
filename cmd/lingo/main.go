@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/espositopasquale/lin-go/tokenizer"
+	"github.com/espositopasquale/lingo/tokenizer"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func stdinHasData() bool {
 func repl(options tokenizer.Options, ud bool) {
 	scanner := bufio.NewScanner(os.Stdin)
 
-	fmt.Println("Lin-go tokenizer. Type a sentence and press Enter (or type 'exit' to quit).")
+	fmt.Println("LinGo tokenizer. Type a sentence and press Enter (or type 'exit' to quit).")
 
 	for {
 		fmt.Print("> ")

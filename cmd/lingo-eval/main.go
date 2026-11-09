@@ -10,8 +10,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/espositopasquale/lin-go/evaluation"
-	"github.com/espositopasquale/lin-go/tokenizer"
+	"github.com/espositopasquale/lingo/evaluation"
+	"github.com/espositopasquale/lingo/tokenizer"
 )
 
 func main() { os.Exit(run(os.Args[1:], os.Stdout, os.Stderr)) }

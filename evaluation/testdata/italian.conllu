@@ -1,4 +1,4 @@
-# Original Lin-go regression examples in CoNLL-U format.
+# Original LinGo regression examples in CoNLL-U format.
 # Not a sample from a UD treebank; POS/dependency columns are placeholders.
 
 # sent_id = lingo-elision

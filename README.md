@@ -1,14 +1,14 @@
-# Lin-go
+# LinGo
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/wordmark-on-dark.svg">
-  <img src="assets/brand/wordmark-on-light.svg" alt="Lin-go — Lin con il tricolore italiano e go in azzurro" width="420">
+  <img src="assets/brand/wordmark-on-light.svg" alt="LinGo — Lin con il tricolore italiano e go in azzurro" width="420">
 </picture>
 
 **Tokenizzazione italiana a regole, in puro Go, con tipi di token, offset UTF-8
 e una suite di valutazione basata su Universal Dependencies.**
 
-Lin-go, o Lingo, segmenta il testo italiano e riconosce parole, numeri, date,
+LinGo segmenta il testo italiano e riconosce parole, numeri, date,
 orari, abbreviazioni, sigle, unità di misura, email, URL, punteggiatura e simboli.
 Ogni token conserva il valore originale e la posizione nel testo di partenza.
 
@@ -65,7 +65,7 @@ richieste dall'applicazione o dal corpus di riferimento.
 Il modulo è:
 
 ```text
-github.com/espositopasquale/lin-go
+github.com/espositopasquale/lingo
 ```
 
 La versione minima dichiarata in [`go.mod`](go.mod) è **Go 1.27.0**.
@@ -94,7 +94,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/espositopasquale/lin-go/tokenizer"
+  "github.com/espositopasquale/lingo/tokenizer"
 )
 
 func main() {
@@ -183,7 +183,7 @@ occorre conservare il testo originale e usare gli offset: concatenare i soli
 | `Symbol` | `symbol` | Simboli e caratteri non classificati dalle altre regole. |
 | `Unknown` | `unknown` | Valore iniziale dell'enumerazione. |
 
-Queste categorie descrivono il riconoscimento lessicale di Lin-go. Le categorie
+Queste categorie descrivono il riconoscimento lessicale di LinGo. Le categorie
 grammaticali UD, come `NOUN`, `VERB` e `DET`, appartengono a un'altra annotazione.
 
 ### Opzioni
@@ -326,7 +326,7 @@ va controllato il codice di uscita del comando.
 ## Universal Dependencies e CoNLL-U
 
 [Universal Dependencies](https://universaldependencies.org/) viene usato come
-riferimento di annotazione e fonte dei corpus di valutazione. Lin-go applica
+riferimento di annotazione e fonte dei corpus di valutazione. LinGo applica
 regole locali: non addestra un modello sui file UD e non esegue chiamate a un
 servizio esterno durante la tokenizzazione o la valutazione.
 
@@ -378,7 +378,7 @@ F1        = 2 × token corretti / (token predetti + token gold)
 
 La percentuale di frasi esatte richiede che l'intera sequenza di token della frase
 corrisponda al gold. I confini delle frasi vengono forniti dal corpus: questi
-risultati non misurano sentence splitting, classificazione dei tipi di Lin-go,
+risultati non misurano sentence splitting, classificazione dei tipi di LinGo,
 POS tagging, espansioni sintattiche, UAS o LAS.
 
 Le regole sono state raffinate sul dev; il test è stato valutato dopo quei
@@ -504,7 +504,7 @@ di lavoro.
 Se la cache Go predefinita è in sola lettura, indica una directory scrivibile:
 
 ```sh
-GOCACHE=/tmp/lin-go-build-cache make check
+GOCACHE=/tmp/lingo-build-cache make check
 ```
 
 ## Limiti noti

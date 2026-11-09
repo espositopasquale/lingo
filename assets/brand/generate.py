@@ -93,7 +93,7 @@ def social_card():
 <path fill="{WHITE}" d="M108 70H144V76H108Z"/>
 <path fill="{RED}" d="M144 70H180V76H144Z"/>
 <g transform="translate(100 129) scale(.90)">{wordmark("social")}</g>
-<text x="72" y="565" font-family="DejaVu Sans, sans-serif" font-size="22" letter-spacing="1.2" fill="#AEBBCD">github.com/espositopasquale/lin-go</text>'''
+<text x="72" y="565" font-family="DejaVu Sans, sans-serif" font-size="22" letter-spacing="1.2" fill="#AEBBCD">github.com/espositopasquale/lingo</text>'''
     return document("social-card", 1200, 630, body, "Lingo repository social sharing card.")
 
 

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/espositopasquale/lin-go/rules"
+	"github.com/espositopasquale/lingo/rules"
 )
 
 type italianWordRule struct{ ud bool }

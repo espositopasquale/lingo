@@ -1,6 +1,6 @@
 package tokenizer
 
-import "github.com/espositopasquale/lin-go/rules"
+import "github.com/espositopasquale/lingo/rules"
 
 func italianAcronyms() *rules.AcronymRule {
 	return rules.NewAcronymRule([]string{

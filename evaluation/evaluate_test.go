@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/espositopasquale/lin-go/conllu"
-	"github.com/espositopasquale/lin-go/tokenizer"
+	"github.com/espositopasquale/lingo/conllu"
+	"github.com/espositopasquale/lingo/tokenizer"
 )
 
 func fixture(t testing.TB) []byte {
