@@ -51,3 +51,16 @@ The corpus files are not distributed with LinGo. The repository contains only
 aggregate evaluation metrics, corpus checksums, and instructions for reproducing
 the results. UD Italian-ISDT retains its own license and attribution requirements
 independently of LinGo's source-code license.
+
+As requested by the corpus license, publications reporting results obtained
+from these data should cite:
+
+> Bosco, C., Montemagni, S., & Simi, M. (2013). Converting Italian Treebanks:
+> Towards an Italian Stanford Dependency Treebank. *Proceedings of the 7th
+> Linguistic Annotation Workshop & Interoperability with Discourse*, pp. 61–69.
+
+Electronic publications should also link to the original
+[ISDT project page](http://medialab.di.unipi.it/wiki/ISDT/). This historical URL
+may no longer be available, but it is retained because the original license
+requests it. The corpus declares the license CC BY-NC-SA 3.0; consult the linked
+upstream `LICENSE.txt` for its complete terms.
