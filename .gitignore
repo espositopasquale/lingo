@@ -5,3 +5,7 @@
 /evaluation/results/
 __pycache__/
 /release/
+/.cache/
+
+# Optional local CI workflow; do not publish it with the repository.
+/.github/workflows/ci.yml
