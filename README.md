@@ -284,6 +284,7 @@ Some useful conventions to know:
 go run ./cmd/lingo -text "L'amico arriva alle 14:30."
 go run ./cmd/lingo -ud -text "L'amico è nella sala."
 go run ./cmd/lingo -ud -no-punct -text "L'amico è qui?!"
+go run ./cmd/lingo -format json -text "Tre parole."
 ```
 
 The CLI prints value, type and byte range. It also accepts positional arguments
@@ -304,6 +305,12 @@ a single string.
 | `-text` | Empty string | Text to tokenize; if not empty it takes precedence over the other sources. |
 | `-ud` | `false` | Selects the Italian UD profile. |
 | `-no-punct` | `false` | Excludes punctuation tokens. |
+| `-format` | `text` | Output as an aligned table or a JSON array (`text` or `json`). |
+| `-version` | `false` | Prints the embedded build version and exits. |
+
+JSON objects contain `value`, `type`, `start` and `end`; offsets use the same
+UTF-8 byte convention as the Go API. Release builds can embed their version with
+`make build VERSION=v1.0.0` (override `BIN` to select the output path).
 
 ### Evaluating a corpus
 

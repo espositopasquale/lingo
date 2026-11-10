@@ -283,6 +283,7 @@ Alcune convenzioni utili da conoscere:
 go run ./cmd/lingo -text "L'amico arriva alle 14:30."
 go run ./cmd/lingo -ud -text "L'amico è nella sala."
 go run ./cmd/lingo -ud -no-punct -text "L'amico è qui?!"
+go run ./cmd/lingo -format json -text "Tre parole."
 ```
 
 La CLI stampa valore, tipo e intervallo in byte. Accetta anche argomenti
@@ -303,6 +304,13 @@ input oppure `-text` con una singola stringa.
 | `-text` | Stringa vuota | Testo da tokenizzare; se non vuoto prevale sulle altre sorgenti. |
 | `-ud` | `false` | Seleziona il profilo italiano UD. |
 | `-no-punct` | `false` | Esclude i token di punteggiatura. |
+| `-format` | `text` | Produce una tabella allineata o un array JSON (`text` o `json`). |
+| `-version` | `false` | Stampa la versione incorporata nella build e termina. |
+
+Gli oggetti JSON contengono `value`, `type`, `start` ed `end`; gli offset
+seguono la stessa convenzione in byte UTF-8 dell'API Go. Le build di rilascio
+possono incorporare la versione con `make build VERSION=v1.0.0` (sovrascrivere
+`BIN` per scegliere il percorso di output).
 
 ### Valutare un corpus
 
