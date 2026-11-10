@@ -38,3 +38,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## UD Italian-ISDT
+
+LinGo was evaluated using the UD Italian-ISDT treebank, release r2.17:
+
+- Repository: <https://github.com/UniversalDependencies/UD_Italian-ISDT>
+- Release r2.17: <https://github.com/UniversalDependencies/UD_Italian-ISDT/tree/r2.17>
+- License: <https://github.com/UniversalDependencies/UD_Italian-ISDT/blob/r2.17/LICENSE.txt>
+
+The corpus files are not distributed with LinGo. The repository contains only
+aggregate evaluation metrics, corpus checksums, and instructions for reproducing
+the results. UD Italian-ISDT retains its own license and attribution requirements
+independently of LinGo's source-code license.
