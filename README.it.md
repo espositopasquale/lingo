@@ -309,7 +309,7 @@ input oppure `-text` con una singola stringa.
 
 Gli oggetti JSON contengono `value`, `type`, `start` ed `end`; gli offset
 seguono la stessa convenzione in byte UTF-8 dell'API Go. Le build di rilascio
-possono incorporare la versione con `make build VERSION=v1.0.0` (sovrascrivere
+possono incorporare la versione con `make build VERSION=v0.1.0` (sovrascrivere
 `BIN` per scegliere il percorso di output).
 
 ### Valutare un corpus

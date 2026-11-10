@@ -310,7 +310,7 @@ a single string.
 
 JSON objects contain `value`, `type`, `start` and `end`; offsets use the same
 UTF-8 byte convention as the Go API. Release builds can embed their version with
-`make build VERSION=v1.0.0` (override `BIN` to select the output path).
+`make build VERSION=v0.1.0` (override `BIN` to select the output path).
 
 ### Evaluating a corpus
 
