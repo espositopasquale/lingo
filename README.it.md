@@ -372,6 +372,11 @@ I risultati attuali, dopo l'integrazione dei lessici, si riferiscono a
 | Dev | 564 | 11.132 | 96,34% | **99,82%** | 555 / 564, pari al 98,40% |
 | Test | 482 | 9.680 | 95,89% | **99,71%** | 468 / 482, pari al 97,10% |
 
+Valutazione eseguita su UD Italian-ISDT r2.17 (Bosco, Montemagni e Simi, 2013;
+[CC BY-NC-SA 3.0](https://github.com/UniversalDependencies/UD_Italian-ISDT/blob/r2.17/LICENSE.txt)).
+Il corpus non è ridistribuito. Attribuzione, metodologia e istruzioni per la
+riproduzione sono nella [guida alla valutazione](docs/evaluation.md).
+
 I report completi con precisione, recall, conteggi e SHA-256 sono in
 [`evaluation/baselines`](evaluation/baselines/README.md), con suffisso
 `-lexicons.json`. Le baseline iniziali sono conservate per confronto.

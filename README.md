@@ -372,6 +372,11 @@ The current results, after the integration of the lexicons, refer to
 | Dev | 564 | 11,132 | 96.34% | **99.82%** | 555 / 564, i.e. 98.40% |
 | Test | 482 | 9,680 | 95.89% | **99.71%** | 468 / 482, i.e. 97.10% |
 
+Evaluated against UD Italian-ISDT r2.17 (Bosco, Montemagni & Simi, 2013;
+[CC BY-NC-SA 3.0](https://github.com/UniversalDependencies/UD_Italian-ISDT/blob/r2.17/LICENSE.txt)).
+The corpus is not redistributed. Attribution, methodology and reproduction
+instructions are provided in the [evaluation guide](docs/evaluation.md).
+
 The full reports with precision, recall, counts and SHA-256 are in
 [`evaluation/baselines`](evaluation/baselines/README.md), with the
 `-lexicons.json` suffix. The initial baselines are kept for comparison.
